@@ -99,6 +99,58 @@
         .instructions li {
             margin: 3px 0;
         }
+        
+        .api-settings-panel {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .api-input-group {
+            margin-bottom: 10px;
+        }
+        
+        .api-input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .api-input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        .api-status {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .api-info {
+            margin-top: 10px;
+            font-size: 11px;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        .api-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .api-info a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +172,9 @@
         <button id="debug-test" class="btn btn-secondary" style="background: rgba(255, 165, 0, 0.3); border: 1px solid rgba(255, 165, 0, 0.5);">
             🔧 Debug Test
         </button>
+        <button id="api-settings" class="btn btn-secondary" style="background: rgba(138, 43, 226, 0.3); border: 1px solid rgba(138, 43, 226, 0.5);">
+            ⚙️ API Settings
+        </button>
     </div>
     
     <div id="status" class="status">
@@ -134,6 +189,22 @@
             <li>Resize using the corner handles</li>
             <li>Click "Analyze Chart" to capture</li>
         </ol>
+    </div>
+    
+    <div id="api-settings-panel" class="api-settings-panel" style="display: none;">
+        <h4>🤖 AI Settings</h4>
+        <div class="api-input-group">
+            <label for="openai-api-key">OpenAI API Key:</label>
+            <input type="password" id="openai-api-key" placeholder="sk-..." />
+            <button id="save-api-key" class="btn btn-primary">Save</button>
+        </div>
+        <div class="api-status" id="api-status"></div>
+        <div class="api-info">
+            <small>
+                Get your API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI Platform</a><br>
+                Your key is stored securely in your browser
+            </small>
+        </div>
     </div>
     
     <script src="popup.js"></script>

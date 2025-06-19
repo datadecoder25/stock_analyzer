@@ -16,7 +16,8 @@
   ],
   "host_permissions": [
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "https://api.openai.com/*"
   ],
   "action": {
     "default_popup": "popup.html",

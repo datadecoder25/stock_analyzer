@@ -175,7 +175,7 @@ class ChartAnalyzer {
                 left: 100px !important;
                 width: 300px !important;
                 height: 200px !important;
-                background: rgba(0, 255, 0, 0.3) !important;
+                background: transparent !important;
                 border: 3px dashed #00ff00 !important;
                 z-index: 9999999 !important;
                 pointer-events: all !important;
@@ -185,13 +185,22 @@ class ChartAnalyzer {
             testBox.innerHTML = `
                 <div style="padding: 20px; text-align: center; color: #000; font-weight: bold; font-size: 16px;">
                     📊 TEST SELECTION BOX<br>
-                    <button onclick="this.parentElement.parentElement.remove()" style="margin-top: 10px; padding: 5px 10px; background: #ff0000; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                    <button id="remove-test-box-btn" style="margin-top: 10px; padding: 5px 10px; background: #ff0000; color: white; border: none; border-radius: 3px; cursor: pointer;">
                         Remove Test Box
                     </button>
                 </div>
             `;
             
             document.body.appendChild(testBox);
+            
+            // Add event listener for remove button
+            const removeBtn = document.getElementById('remove-test-box-btn');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', function() {
+                    testBox.remove();
+                });
+            }
+            
             console.log('✅ Simple test box created and added');
             
         } catch (error) {
@@ -272,7 +281,7 @@ class ChartAnalyzer {
         // Add inline styles to ensure visibility (in case CSS doesn't load)
         this.selectionBox.style.position = 'absolute';
         this.selectionBox.style.border = '2px dashed #00ff00';
-        this.selectionBox.style.background = 'rgba(0, 255, 0, 0.1)';
+        this.selectionBox.style.background = 'transparent';
         this.selectionBox.style.cursor = 'move';
         this.selectionBox.style.pointerEvents = 'all';
         this.selectionBox.style.minWidth = '100px';
@@ -312,7 +321,7 @@ class ChartAnalyzer {
                 this.selectionBox.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
                 setTimeout(() => {
                     if (this.selectionBox) {
-                        this.selectionBox.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
+                        this.selectionBox.style.backgroundColor = 'transparent';
                     }
                 }, 500);
             }
@@ -1303,9 +1312,8 @@ class ChartAnalyzer {
                 <div class="panel-section">
                     <div class="section-title">📸 Captured Image</div>
                     <div style="text-align: center; margin: 10px 0;">
-                        <img src="${analysis.imageData.dataUrl}" 
+                        <img id="preview-image" src="${analysis.imageData.dataUrl}" 
                              style="max-width: 200px; max-height: 120px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;"
-                             onclick="this.style.maxWidth = this.style.maxWidth === '200px' ? '400px' : '200px'; this.style.maxHeight = this.style.maxHeight === '120px' ? '240px' : '120px';"
                              title="Click to enlarge/shrink">
                     </div>
                     <div style="font-size: 10px; color: #666; text-align: center;">
@@ -1366,6 +1374,16 @@ class ChartAnalyzer {
             this.analysisPanel.remove();
             this.analysisPanel = null;
         });
+        
+        // Add image preview click functionality
+        const previewImage = this.analysisPanel.querySelector('#preview-image');
+        if (previewImage) {
+            previewImage.addEventListener('click', function() {
+                const isEnlarged = this.style.maxWidth === '400px';
+                this.style.maxWidth = isEnlarged ? '200px' : '400px';
+                this.style.maxHeight = isEnlarged ? '120px' : '240px';
+            });
+        }
         
         document.body.appendChild(this.analysisPanel);
     }
