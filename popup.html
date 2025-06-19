@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .instructions {
+            margin-top: 15px;
+            font-size: 11px;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+        }
+        
+        .instructions h4 {
+            margin: 0 0 8px 0;
+            font-size: 12px;
+        }
+        
+        .instructions ol {
+            margin: 5px 0;
+            padding-left: 15px;
+        }
+        
+        .instructions li {
+            margin: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">📈 Stock Chart Analyzer</div>
+        <div class="subtitle">Simple Chart Selection Tool</div>
+    </div>
+    
+    <div class="action-buttons">
+        <button id="apply-to-chart" class="btn btn-primary">
+            🎯 Apply to Chart
+        </button>
+        <button id="toggle-analysis" class="btn btn-secondary" style="display: none;">
+            🔍 Toggle Analysis
+        </button>
+        <button id="clear-overlays" class="btn btn-secondary">
+            🗑️ Clear Selection Box
+        </button>
+        <button id="debug-test" class="btn btn-secondary" style="background: rgba(255, 165, 0, 0.3); border: 1px solid rgba(255, 165, 0, 0.5);">
+            🔧 Debug Test
+        </button>
+    </div>
+    
+    <div id="status" class="status">
+        Ready to select chart area
+    </div>
+    
+    <div class="instructions">
+        <h4>📋 How to use:</h4>
+        <ol>
+            <li>Click "Apply to Chart" button</li>
+            <li>Drag the green box over your chart</li>
+            <li>Resize using the corner handles</li>
+            <li>Click "Analyze Chart" to capture</li>
+        </ol>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html> 
