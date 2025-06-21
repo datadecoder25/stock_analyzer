@@ -1,2 +1,9 @@
 node_modules/
+*.log
+.DS_Store
+*.zip
+dist/
+build/
 .env
+*.key
+html2canvas.min.js
